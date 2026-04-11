@@ -1,0 +1,51 @@
+name: frontend CI (Real Project)
+
+on:
+  push:
+    branches:[ main ]
+
+
+jobs:
+  build-and-docker:
+    runs-on: ubuntu-latest
+
+
+    steps:
+      # 1. Get code 
+      - name: checkout code
+        uses: actions/checkout@v6
+
+      # 2. set up node
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ["18","20"]
+
+      # 3. Install dependencies
+      - name: install dependencies
+        run: npm install
+
+
+      # 4 . Build project
+      - name: Build project
+        run: npm run build
+
+
+      # 5 . Verify dist exists
+      - name: check dist folder
+        run:  ls dist
+      
+      # 6 . build docker image
+      - name: Build docker image
+        run: docker build -t clean-blog-app .
+
+      # 7 . Run Container (test)
+      - name: run container
+        run: |
+          docker run -d -p 8080:80 clean-blog-app
+          sleep 5
+          docker ps
+
+      # 8 . Test app (Important to check health)
+      - name: Test app respose
+        run: curl http://localhost:8080
