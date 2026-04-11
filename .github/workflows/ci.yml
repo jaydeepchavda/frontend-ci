@@ -43,7 +43,7 @@ jobs:
       - name: run container
         run: |
           docker run -d -p 8080:80 clean-blog-app
-          sleep 5
+          sleep 10
           docker ps
 
       # 8 . Test app (Important to check health)
