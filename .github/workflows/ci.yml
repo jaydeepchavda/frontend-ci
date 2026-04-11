@@ -4,77 +4,55 @@ on:
   push:
     branches: [ main ]
 
-
 jobs:
   build-and-docker:
     runs-on: ubuntu-latest
 
-
     steps:
-      # 1. Get code 
-      - name: checkout code
+      # 1. Checkout code (FIXED VERSION)
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. set up node
-      - name: setup node
+      # 2. Setup Node
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "18"
 
       # 3. Install dependencies
-      - name: install dependencies
+      - name: Install dependencies
         run: npm install
 
-
-      # 4 . Build project
+      # 4. Build project
       - name: Build project
         run: npm run build
 
+      # 5. Debug project structure
+      - name: Debug files
+        run: |
+          echo "Root files:"
+          ls -la
+          echo "Dist files:"
+          ls -la dist || echo "dist not found"
 
-      # 5 . Verify dist exists
-      - name: check dist folder
-        run:  ls dist
-      
-      # 6 . build docker image
-      - name: Build docker image
+      # 6. Build Docker image
+      - name: Build Docker image
         run: docker build -t clean-blog-app .
 
-      # 7 . Run Container (test)
-      - name: run container
+      # 7. Run container
+      - name: Run container
         run: |
           docker run -d -p 8080:80 clean-blog-app
           sleep 10
-          docker ps
+          docker ps -a
 
-      # bonus debug test
-
-      - name: Inspect container
-        run: docker inspect $(docker ps -q)
-
+      # 8. Check container logs (VERY IMPORTANT)
       - name: Check container logs
         run: docker logs $(docker ps -aq)
 
-
-      # 8 . Test app (Important to check health)
-      - name: Test app respose
+      # 9. Test app response
+      - name: Test app response
         run: curl http://localhost:8080
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
