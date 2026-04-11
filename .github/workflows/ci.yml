@@ -1,4 +1,4 @@
-name: frontend CI (Real Project)
+name: Frontend CI (Debug + Docker)
 
 on:
   push:
@@ -58,3 +58,25 @@ jobs:
       # 8 . Test app (Important to check health)
       - name: Test app respose
         run: curl http://localhost:8080
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
