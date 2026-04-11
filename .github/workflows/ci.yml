@@ -46,6 +46,15 @@ jobs:
           sleep 10
           docker ps
 
+      # bonus debug test
+
+      - name: Inspect container
+        run: docker inspect $(docker ps -q)
+
+      - name: Check container logs
+        run: docker logs $(docker ps -aq)
+
+
       # 8 . Test app (Important to check health)
       - name: Test app respose
         run: curl http://localhost:8080
