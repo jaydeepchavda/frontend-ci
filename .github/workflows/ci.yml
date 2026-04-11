@@ -19,7 +19,7 @@ jobs:
       - name: setup node
         uses: actions/setup-node@v4
         with:
-          node-version: ["18","20"]
+          node-version: "18"
 
       # 3. Install dependencies
       - name: install dependencies
