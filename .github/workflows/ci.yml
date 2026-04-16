@@ -48,7 +48,7 @@ jobs:
       # configure kubeconfig
       - name: set kubeconfig
         run: |
-          mkdir -p $HOME/,kube
+          mkdir -p $HOME/.kube
           echo "${{secrets.KUBE_CONFIG }}" > $HOME/.kube/config
 
       #10. deploy to kubernetes
