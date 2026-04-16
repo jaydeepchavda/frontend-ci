@@ -55,8 +55,8 @@ jobs:
       - name: deploy k8s
         run: |
           kebectl set image deployment/frontend-deployement \
-        frontend-container=jaydipaws/clean-blog-app:latest
-
-        kubectl rollout status deployment/frontend-deployment
+          frontend-container=jaydipaws/clean-blog-app:latest
+    
+          kubectl rollout status deployment/frontend-deployment
 
 
