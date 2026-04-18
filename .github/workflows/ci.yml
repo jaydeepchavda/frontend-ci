@@ -46,17 +46,17 @@ jobs:
         uses: azure/setup-kubectl@v4
 
       # configure kubeconfig
-      - name: set kubeconfig
-        run: |
-          mkdir -p $HOME/.kube
-          echo "${{secrets.KUBE_CONFIG }}" > $HOME/.kube/config
+      #- name: set kubeconfig
+      # run: |
+      #   mkdir -p $HOME/.kube
+      #   echo "${{secrets.KUBE_CONFIG }}" > $HOME/.kube/config
 
       #10. deploy to kubernetes
-      - name: deploy k8s
-        run: |
-          kubectl set image deployment/frontend-deployment \
-          frontend-container=jaydipaws/clean-blog-app:latest
+      #- name: deploy k8s
+      # run: |
+      #   kubectl set image deployment/frontend-deployment \
+      #   frontend-container=jaydipaws/clean-blog-app:latest
     
-          kubectl rollout status deployment/frontend-deployment
+      #   kubectl rollout status deployment/frontend-deployment
 
 
