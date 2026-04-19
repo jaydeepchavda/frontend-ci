@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 
 
 metadata: 
-  name: blog-pvc
+  name: standard
 
 
 spec: 

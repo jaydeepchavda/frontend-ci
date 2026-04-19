@@ -58,6 +58,6 @@ spec:
       volumes:
         - name: blog-storage
           persistentVolumeClaim: 
-            blog-pvc
+            claimName: blog-pvc
 
 
