@@ -45,6 +45,9 @@ jobs:
       - name: setup kubectl
         uses: azure/setup-kubectl@v4
 
+      #this steps are for servers
+      #like aws and gcp and azure
+    
       # configure kubeconfig
       #- name: set kubeconfig
       # run: |

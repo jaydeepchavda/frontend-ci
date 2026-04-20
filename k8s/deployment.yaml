@@ -45,15 +45,6 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 5
 
-          resources:
-            requests:
-              memory: "128Mi"
-              cpu: "200m"
-
-            limits:
-              memory: "256Mi"
-              cpu: "500m"
-
         
       volumes:
         - name: blog-storage
